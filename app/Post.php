@@ -44,19 +44,19 @@ class Post extends Model
         ];
     }
 
-    public static function add($filds)
+    public static function add($fields)
     {
         $post =  new self;
-        $post->fill($filds);
+        $post->fill($fields);
         $post->user_id = 1;
         $post->save();
 
         return $post;
     }
 
-    public function edit($filds)
+    public function edit($fields)
     {
-        $this->fill($filds);
+        $this->fill($fields);
         $this->save();
     }
 
@@ -70,7 +70,7 @@ class Post extends Model
     {
         if($image == null) { return; }
 
-        Storage::delete('uploads/' . $this->image);
+        Storage::delete('uploads/' . $this->image); //delete preImage
         $filename = str_random(10) . '.' . $image->extension();
         $image->saveAs('uploads', $filename);
         $this->image = $filename;
@@ -98,7 +98,7 @@ class Post extends Model
     {
         if($ids == null) { return; }
 
-        $this->tags()->sync($ids);
+        $this->tags()->sync($ids); //sync post with ids tags
     }
 
     public function setDraft()

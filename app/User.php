@@ -10,20 +10,13 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    const IS_BANNED = 1;
+    const IS_ACTIVE = 0;
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -80,5 +73,43 @@ class User extends Authenticatable
         }
 
         return '/uploads/' . $this->image;
+    }
+
+    public function makeAdmin ()
+    {
+        $this->is_admin = 1;
+    }
+
+    public function makeNormal()
+    {
+        $this->is_admin = 0;
+    }
+
+    public function toggleAdmin($val)
+    {
+        if ($val == null) {
+            return $this->makeNormal();
+        }
+        return $this->makeAdmin();
+    }
+
+    public function bun()
+    {
+        $this->status = User::IS_BANNED;
+        $this->save();
+    }
+
+    public function unbun()
+    {
+        $this->status = User::IS_ACTIVE;
+        $this->save();
+    }
+
+    public function toggleBun($val)
+    {
+        if ($val == null) {
+            return $this->unbun();
+        }
+        return $this->bun();
     }
 }

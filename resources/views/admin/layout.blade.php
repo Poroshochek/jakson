@@ -7,6 +7,18 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        table.table form{
+            display: inline-block;
+        }
+        button.delete-task
+        {
+            background: transparent;
+            border: none;
+            color: #337ab7;
+            padding: 0;
+        }
+    </style>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -18,7 +30,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="../../index2.html" class="logo">
+        <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -205,8 +217,8 @@
                     </a>
                 </li>
                 <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
-                <li><a href="#"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
-                <li><a href="#"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
+                <li><a href="{{ route('categories.index') }}"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
+                <li><a href="{{ route('tags.index') }}"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
                 <li>
                     <a href="#">
                         <i class="fa fa-commenting"></i> <span>Комментарии</span>
@@ -215,7 +227,7 @@
             </span>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
+                <li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
                 <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
 
             </ul>

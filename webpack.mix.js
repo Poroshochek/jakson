@@ -63,5 +63,5 @@ mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css')
 //     'resources/assets/front/js/scripts.js'
 // ], 'public/js/front.js');
 //
-// mix.copy('resources/assets/front/fonts', 'public/fonts');
-// mix.copy('resources/assets/front/images', 'public/images');
+mix.copy('resources/assets/front/fonts', 'public/fonts');
+mix.copy('resources/assets/front/images', 'public/images');

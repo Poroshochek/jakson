@@ -13,11 +13,26 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+//$factory->define(App\User::class, function (Faker $faker) {
+//    return [
+//        'name' => $faker->name,
+//        'email' => $faker->unique()->safeEmail,
+//        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+//        'remember_token' => str_random(10),
+//    ];
+//});
+
+$factory->define(App\Post::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+        'title'         => $faker->sentence,
+        'content'       => $faker->sentence,
+        'image'         => 'photo1.png',
+        'date'          => '2018/08/03',
+        'views'         => $faker->numberBetween(0, 5000),
+        'category_id'   => 3,
+        'status'        => 1,
+        'user_id'       => 1,
+        'is_featured'   => 0,
+        'description'   => $faker->sentence,
     ];
 });

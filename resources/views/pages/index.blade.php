@@ -11,9 +11,9 @@
 
                         <article class="post">
                             <div class="post-thumb">
-                                <a href="blog.html"><img src="{{ $post->getImage() }}" alt=""></a>
+                                <a href="{{ route('post.show', $post->slug) }}"><img src="{{ $post->getImage() }}" alt=""></a>
 
-                                <a href="blog.html" class="post-thumb-overlay text-center">
+                                <a href="{{ route('post.show', $post->slug) }}" class="post-thumb-overlay text-center">
                                     <div class="text-uppercase text-center">View Post</div>
                                 </a>
                             </div>
@@ -21,7 +21,7 @@
                                 <header class="entry-header text-center text-uppercase">
                                     <h6><a href="#"> {{ $post->category->title }}</a></h6>
 
-                                    <h1 class="entry-title"><a href="blog.html">{{ $post->title }}</a></h1>
+                                    <h1 class="entry-title"><a href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a></h1>
 
 
                                 </header>
@@ -29,7 +29,7 @@
                                     <p>{!! $post->description !!} </p>
 
                                     <div class="btn-continue-reading text-center text-uppercase">
-                                        <a href="blog.html" class="more-link">Continue Reading</a>
+                                        <a href="{{ route('post.show', $post->slug) }}" class="more-link">Continue Reading</a>
                                     </div>
                                 </div>
                                 <div class="social-share">

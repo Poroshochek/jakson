@@ -217,4 +217,9 @@ class Post extends Model
         return self::all()->except($this->id); //pull all without self
     }
 
+    public function hasCategory()
+    {
+        return $this->category != null ? true : false;
+    }
+
 }

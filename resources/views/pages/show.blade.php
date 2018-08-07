@@ -9,13 +9,15 @@
                 <div class="col-md-8">
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="{{ $post->getImage() }}" alt=""></a>
+                            <a href="{{ route('post.show', $post->slug) }}"><img src="{{ $post->getImage() }}" alt=""></a>
                         </div>
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                <h6><a href="#"> {{ $post->getCategoryTitle() }}</a></h6>
+                                @if($post->hasCategory())
+                                    <h6><a href="{{ route('category.show', $post->category->slug) }}"> {{ $post->getCategoryTitle() }}</a></h6>
+                                @endif
 
-                                <h1 class="entry-title"><a href="blog.html">{{ $post->title }}</a></h1>
+                                <h1 class="entry-title"><a href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a></h1>
 
 
                             </header>
@@ -24,7 +26,7 @@
                             </div>
                             <div class="decoration">
                              @foreach($post->tags as $tag)
-                                <a href="#" class="btn btn-default">{{ $tag->title }}</a>
+                                <a href="{{ route('tag.show', $tag->slug) }}" class="btn btn-default">{{ $tag->title }}</a>
                              @endforeach
                             </div>
 
@@ -42,7 +44,7 @@
                         </div>
                     </article>
                     <div class="top-comment"><!--top comment-->
-                        <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
+                        <img src="/img/comment.jpg" class="pull-left img-circle" alt="">
                         <h4>Rubel Miah</h4>
 
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
@@ -104,7 +106,7 @@
                         <h4>3 comments</h4>
 
                         <div class="comment-img">
-                            <img class="img-circle" src="/images/comment-img.jpg" alt="">
+                            <img class="img-circle" src="/img/comment-img.jpg" alt="">
                         </div>
 
                         <div class="comment-text">
@@ -174,7 +176,7 @@
                             <div class="popular-post">
 
 
-                                <a href="#" class="popular-img"><img src="/images/p1.jpg" alt="">
+                                <a href="#" class="popular-img"><img src="/img/p1.jpg" alt="">
 
                                     <div class="p-overlay"></div>
                                 </a>
@@ -187,7 +189,7 @@
                             </div>
                             <div class="popular-post">
 
-                                <a href="#" class="popular-img"><img src="/images/p1.jpg" alt="">
+                                <a href="#" class="popular-img"><img src="/img/p1.jpg" alt="">
 
                                     <div class="p-overlay"></div>
                                 </a>
@@ -200,7 +202,7 @@
                             <div class="popular-post">
 
 
-                                <a href="#" class="popular-img"><img src="/images/p1.jpg" alt="">
+                                <a href="#" class="popular-img"><img src="/img/p1.jpg" alt="">
 
                                     <div class="p-overlay"></div>
                                 </a>
@@ -217,7 +219,7 @@
                             <div id="widget-feature" class="owl-carousel">
                                 <div class="item">
                                     <div class="feature-content">
-                                        <img src="/images/p1.jpg" alt="">
+                                        <img src="/img/p1.jpg" alt="">
 
                                         <a href="#" class="overlay-text text-center">
                                             <h5 class="text-uppercase">Home is peaceful</h5>
@@ -228,7 +230,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="feature-content">
-                                        <img src="/images/p2.jpg" alt="">
+                                        <img src="/img/p2.jpg" alt="">
 
                                         <a href="#" class="overlay-text text-center">
                                             <h5 class="text-uppercase">Home is peaceful</h5>
@@ -239,7 +241,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="feature-content">
-                                        <img src="/images/p3.jpg" alt="">
+                                        <img src="/img/p3.jpg" alt="">
 
                                         <a href="#" class="overlay-text text-center">
                                             <h5 class="text-uppercase">Home is peaceful</h5>
@@ -257,7 +259,7 @@
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+                                        <a href="#" class="popular-img"><img src="/img/r-p.jpg" alt="">
 
                                             <div class="p-overlay"></div>
                                         </a>
@@ -273,7 +275,7 @@
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+                                        <a href="#" class="popular-img"><img src="/img/r-p.jpg" alt="">
 
                                             <div class="p-overlay"></div>
                                         </a>
@@ -289,7 +291,7 @@
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+                                        <a href="#" class="popular-img"><img src="/img/r-p.jpg" alt="">
 
                                             <div class="p-overlay"></div>
                                         </a>
@@ -305,7 +307,7 @@
 
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="#" class="popular-img"><img src="/images/r-p.jpg" alt="">
+                                        <a href="#" class="popular-img"><img src="/img/r-p.jpg" alt="">
 
                                             <div class="p-overlay"></div>
                                         </a>
@@ -351,31 +353,31 @@
 
                             <div class="instragram-follow">
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="/images/ins-flow.jpg" alt="">
+                                    <img src="/img/ins-flow.jpg" alt="">
                                 </a>
 
                             </div>

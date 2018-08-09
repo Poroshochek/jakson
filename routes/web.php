@@ -11,18 +11,31 @@
 |
 */
 
+//Route::group([
+//    'middleware'    => 'admin'
+//], function () {
+//
+//});
+
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 
-Route::get('/register', 'AuthController@registerForm');
-Route::post('/register', 'AuthController@register');
-Route::get('/login', 'AuthController@loginForm');
-Route::post('/login', 'AuthController@login');
-Route::get('/logout', 'AuthController@logout');
+Route::group(['middleware' => 'auth'], function() { // see only auth check users who registered on site
+    Route::get('/logout', 'AuthController@logout');
+});
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
+Route::group(['middleware' => 'guest'], function () { //all users cat see
+    Route::get('/register', 'AuthController@registerForm');
+    Route::post('/register', 'AuthController@register');
+    Route::get('/login', 'AuthController@loginForm');
+    Route::post('/login', 'AuthController@login');
+});
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/', 'DashboardController@index');
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/tags', 'TagsController');

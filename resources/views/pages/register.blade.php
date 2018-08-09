@@ -9,7 +9,11 @@
                 <div class="col-md-8">
 
                     <div class="leave-comment mr0"><!--leave comment-->
-
+                        @if(session('status'))
+                            <div class="alert alert-danger">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <h3 class="text-uppercase">Register</h3>
                         @include('admin.errors')
                         <br>

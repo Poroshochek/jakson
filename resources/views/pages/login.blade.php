@@ -10,7 +10,7 @@
                 <div class="col-md-8">
 
                     <div class="leave-comment mr0"><!--leave comment-->
-
+                        @include('admin.errors')
                         <h3 class="text-uppercase">Login</h3>
                         <br>
                         <form class="form-horizontal contact-form" role="form" method="post" action="/login">
@@ -27,7 +27,7 @@
                                            placeholder="password">
                                 </div>
                             </div>
-                            <button type="submit" name="submit" class="btn send-btn">Login</button>
+                            <button type="submit" class="btn send-btn">Login</button>
 
                         </form>
                     </div><!--end leave comment-->

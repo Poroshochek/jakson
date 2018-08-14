@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -11,6 +13,12 @@ class CommentController extends Controller
         $this->validate($request, [
             'message' => 'required'
         ]);
+
+        $comment = new Comment;
+        $comment->text = $request->get('message');
+        $comment->post_id = $request->get('post_id');
+        $comment->user_id = Auth::user()->id;
+        $comment->save();
 
         return redirect()->back()->with('status', 'Comment will be added after validation =)');
     }

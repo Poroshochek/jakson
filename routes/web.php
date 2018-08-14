@@ -25,12 +25,15 @@ Route::get('/category/{slug}', 'HomeController@category')->name('category.show')
 
 Route::group(['middleware' => 'auth'], function() { // see only auth check users who registered on site
     Route::get('/logout', 'AuthController@logout');
+    Route::post('profile', 'ProfileController@store');
+    Route::get('/profile', 'ProfileController@index');
+    Route::post('/comment', 'CommentController@store');
 });
 
 Route::group(['middleware' => 'guest'], function () { //all users cat see
     Route::get('/register', 'AuthController@registerForm');
     Route::post('/register', 'AuthController@register');
-    Route::get('/login', 'AuthController@loginForm');
+    Route::get('/login', 'AuthController@loginForm')->name('login');
     Route::post('/login', 'AuthController@login');
 });
 

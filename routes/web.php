@@ -22,6 +22,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+Route::post('/subscribe', 'SubscribersController@sub');
+Route::get('/verification/{token}', 'SubscribersController@verify');
 
 Route::group(['middleware' => 'auth'], function() { // see only auth check users who registered on site
     Route::get('/logout', 'AuthController@logout');
@@ -47,6 +49,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::get('/comments', 'CommentsController@index');
     Route::get('/comments/toggle/{id}', 'CommentsController@toggle');
     Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('comments.destroy');
+    Route::resource('/subscribers', 'SubscribersController');
 });
 
 

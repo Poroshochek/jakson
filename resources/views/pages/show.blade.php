@@ -49,10 +49,10 @@
                         </div>
                     </article>
                     <div class="top-comment"><!--top comment-->
-                        <img src="{{ $post->author->getAvatar() }}" class="pull-left img-circle" alt="">
+                        <img src="{{ $post->author->getAvatar() }}" style="width: 100px;height: 100px" class="pull-left img-circle" alt="">
                         <h4>{{ $post->author->name }} Miah</h4>
 
-                        <p>{{ $post->author->ustatus }}</p>
+                        <p>{!! $post->author->ustatus !!}</p>
                     </div><!--top comment end-->
                     <div class="row"><!--blog next previous-->
                         <div class="col-md-6">
@@ -111,7 +111,7 @@
                         @foreach($post->comments->where('status', 1) as $comment)
                     <div class="bottom-comment"><!--bottom comment-->
                                 <div class="comment-img">
-                                    <img class="img-circle" src="{{ $comment->author->getAvatar() }}" alt="">
+                                    <img class="img-circle" style="width: 70px;height: 70px" src="{{ $comment->author->getAvatar() }}" alt="">
                                 </div>
 
                                 <div class="comment-text">

@@ -47,6 +47,14 @@
                                     <input type="file" class="form-control" id="image" name="avatar">
                                 </div>
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Ваш статус</label>
+                                    <textarea name="ustatus" id="" cols="30" rows="10" class="form-control">{{ $user->ustatus }}</textarea>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn send-btn">Update</button>
 
                         </form>
@@ -56,6 +64,6 @@
             </div>
         </div>
     </div>
-    <!-- end main content-->
+    <!-- for status edit -->
 
 @endsection

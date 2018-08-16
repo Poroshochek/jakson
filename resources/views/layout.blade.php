@@ -255,5 +255,13 @@
 </footer>
 <!-- js files -->
 <script src="/js/front.js"></script>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        let editor = CKEDITOR.replaceAll();
+        CKFinder.setupCKEditor( editor );
+    })
+</script>
 </body>
 </html>

@@ -14,7 +14,7 @@ class User extends Authenticatable
     const IS_ACTIVE = 0;
 
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'ustatus'
     ];
 
     protected $hidden = [
@@ -119,9 +119,9 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function toggleBun($val)
+    public function toggleBun()
     {
-        if ($val == null) {
+        if ($this->status == 1) {
             return $this->unbun();
         }
         return $this->bun();

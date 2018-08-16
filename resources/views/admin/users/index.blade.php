@@ -51,6 +51,11 @@
                                 <img src="{{ $user->getAvatar() }}" alt="avatar" class="img-responsive" width="150">
                             </td>
                             <td>
+                                @if($user->status == 1)
+                                    <a href="/admin/users/banning/{{$user->id}}" class="fa fa-thumbs-o-up"></a>
+                                @else
+                                    <a href="/admin/users/banning/{{$user->id}}" class="fa fa-lock"></a>
+                                @endif
                                 <a href="{{ route('users.edit', $user->id) }}" class="fa fa-pencil"></a>
                                 {{ Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) }}
                                 <button onclick="return confirm('Точно хо удалить!?');" type="submit" class="delete delete-task">

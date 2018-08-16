@@ -97,6 +97,14 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
+    public function banning($id)
+    {
+        $user = User::find($id);
+        $user->toggleBun();
+
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

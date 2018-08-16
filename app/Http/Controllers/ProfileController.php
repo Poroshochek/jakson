@@ -25,7 +25,6 @@ class ProfileController extends Controller
                 Rule::unique('users')->ignore(Auth::user()->id),
 
             ],
-            'avatar'    => 'required'
         ]);
 
         $user = Auth::user();
